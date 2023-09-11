@@ -6,12 +6,27 @@ part of 'todos_providers.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$todoCurrentFilterHash() => r'3a793a2f2012483eb232b20da849df87bcc050c9';
+String _$filteredTodosHash() => r'5e3be705d323e756a4a34c3d5aa56b95b80146e3';
+
+/// See also [filteredTodos].
+@ProviderFor(filteredTodos)
+final filteredTodosProvider = AutoDisposeProvider<List<Todo>>.internal(
+  filteredTodos,
+  name: r'filteredTodosProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$filteredTodosHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef FilteredTodosRef = AutoDisposeProviderRef<List<Todo>>;
+String _$todoCurrentFilterHash() => r'71ad0b4c662224b9e7522a7a40c0cf18af223650';
 
 /// See also [TodoCurrentFilter].
 @ProviderFor(TodoCurrentFilter)
 final todoCurrentFilterProvider =
-    AutoDisposeNotifierProvider<TodoCurrentFilter, FilterType>.internal(
+    NotifierProvider<TodoCurrentFilter, FilterType>.internal(
   TodoCurrentFilter.new,
   name: r'todoCurrentFilterProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -21,12 +36,12 @@ final todoCurrentFilterProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$TodoCurrentFilter = AutoDisposeNotifier<FilterType>;
-String _$todosHash() => r'485056d7bba2ca8d82acf11892c0a30c38c9e023';
+typedef _$TodoCurrentFilter = Notifier<FilterType>;
+String _$todosHash() => r'ba4189bd4a027976886f330a84f05e2b0b4b9fbe';
 
 /// See also [Todos].
 @ProviderFor(Todos)
-final todosProvider = AutoDisposeNotifierProvider<Todos, List<Todo>>.internal(
+final todosProvider = NotifierProvider<Todos, List<Todo>>.internal(
   Todos.new,
   name: r'todosProvider',
   debugGetCreateSourceHash:
@@ -35,6 +50,6 @@ final todosProvider = AutoDisposeNotifierProvider<Todos, List<Todo>>.internal(
   allTransitiveDependencies: null,
 );
 
-typedef _$Todos = AutoDisposeNotifier<List<Todo>>;
+typedef _$Todos = Notifier<List<Todo>>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member
